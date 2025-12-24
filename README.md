@@ -1,0 +1,252 @@
+# Gaming Streamer Site
+
+Local development:
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Start the proxy server (requires YOUTUBE_API_KEY and CHANNEL_ID in env):
+
+```bash
+# PowerShell
+$env:YOUTUBE_API_KEY="<your_key>"
+$env:CHANNEL_ID="<your_channel_id>"
+$env:GEMINI_API_KEY="<your_gemini_key>"
+npm run start:server
+```
+
+3. Start the frontend
+
+```bash
+npm run dev
+```
+
+Notes:
+- Do NOT commit `.env` with secret keys. Use environment variables in deployment.
+- The chat uses a server proxy at `/api/gemini` and YouTube data is proxied via `/api/youtube`.
+# 🎮 Gaming YouTuber Website
+
+A high-energy, animated, interactive gaming YouTuber website built with React, Vite, Tailwind CSS, and Framer Motion. Perfect for streamers, content creators, and gaming influencers.
+
+## 🚀 Features
+
+### Core Pages
+- **Home** - Animated hero section with stats and featured videos
+- **Live** - YouTube live stream embed with schedule and stream info
+- **Videos** - Grid-based video gallery with filtering and game categories
+- **About** - Gamer bio, achievements, games played, and PC setup
+- **Schedule** - Weekly streaming schedule with upcoming events
+- **Contact** - Contact form, social links, and business inquiries
+
+### Visual Effects & Animation
+- ✨ Animated hero banner with gradient text
+- 🎯 Particle background animation
+- 🎮 Neon glow effects and hover animations
+- 💫 Framer Motion smooth transitions
+- 🌟 HUD-style gaming panels
+- 🔴 Live status badge with pulse animation
+- 📱 Fully responsive mobile-first design
+
+### Gaming UI/UX
+- Dark neon theme (Red/Purple/Cyan)
+- Gaming fonts (Orbitron, Audiowide)
+- Esports-style panels and borders
+- Smooth scrolling and transitions
+- Interactive button animations
+- Custom scrollbar styling
+
+## 🛠️ Tech Stack
+
+- **React 18** - UI framework
+- **Vite** - Lightning-fast build tool
+- **Tailwind CSS** - Utility-first styling
+- **Framer Motion** - Advanced animations
+- **React Router** - Page navigation
+- **PostCSS** - CSS processing
+
+## 📦 Installation
+
+1. **Navigate to project directory**
+   ```bash
+   cd gaming-streamer-site
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+5. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
+## 📁 Project Structure
+
+```
+gaming-streamer-site/
+├── public/
+│   ├── images/          # Hero, thumbnail, and background images
+│   └── sounds/          # Button clicks, background music
+├── src/
+│   ├── components/
+│   │   ├── NeonButton.jsx
+│   │   ├── LivePlayer.jsx
+│   │   ├── VideoCard.jsx
+│   │   ├── VideoGrid.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── Navigation.jsx
+│   │   └── ParticleBackground.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Live.jsx
+│   │   ├── Videos.jsx
+│   │   ├── About.jsx
+│   │   ├── Schedule.jsx
+│   │   └── Contact.jsx
+│   ├── animations/      # Custom animation utilities
+│   ├── api/            # API calls (YouTube, Discord)
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css       # Global styles
+├── index.html
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+└── postcss.config.js
+```
+
+## 🎨 Customization
+
+### Change Colors
+Edit `tailwind.config.js`:
+```javascript
+neon: {
+  red: '#FF0055',
+  purple: '#9D00FF',
+  cyan: '#00D9FF'
+}
+```
+
+### Update Channel Info
+- Edit component files to add your YouTube channel ID
+- Replace placeholder text with your actual content
+- Add your images to `public/images/`
+
+### Add YouTube Integration
+1. Get YouTube Data API key
+2. Fetch videos in `src/api/youtube.js`
+3. Update `VideoGrid.jsx` to use real data
+
+### Add Discord Widget
+1. Get Discord server invite link
+2. Add to Navigation and Contact pages
+3. Use Discord's embed widget
+
+## 🌟 Key Components
+
+### NeonButton
+Animated gaming-style button with glow effects
+```jsx
+<NeonButton variant="primary">Subscribe</NeonButton>
+```
+
+### LivePlayer
+Embedded YouTube live player with status badge
+```jsx
+<LivePlayer isLive={true} channelId="YOUR_ID" />
+```
+
+### VideoGrid
+Responsive video card grid with animations
+```jsx
+<VideoGrid videos={videos} title="Latest Videos" />
+```
+
+### ParticleBackground
+Animated particle effects background
+```jsx
+<ParticleBackground />
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel
+```
+
+### Netlify
+```bash
+npm run build
+netlify deploy --prod --dir=dist
+```
+
+### GitHub Pages
+Add to `vite.config.js`:
+```javascript
+export default {
+  base: '/gaming-streamer-site/'
+}
+```
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Breakpoints: sm, md, lg, xl
+- Touch-friendly buttons
+- Optimized images
+- Fast loading on mobile
+
+## 🔧 Environment Variables
+
+Create `.env` file:
+```
+VITE_YOUTUBE_API_KEY=your_key_here
+VITE_DISCORD_SERVER_ID=your_id_here
+VITE_CHANNEL_ID=your_channel_id
+```
+
+## 🎯 Future Enhancements
+
+- [ ] YouTube API integration for live videos
+- [ ] Discord widget integration
+- [ ] Comments section with Discord API
+- [ ] Video upload management
+- [ ] Newsletter signup
+- [ ] Giveaway system
+- [ ] Fan leaderboard
+- [ ] Merchandise store
+- [ ] AI chatbot
+- [ ] Analytics dashboard
+
+## 📄 License
+
+MIT License - Feel free to use this for your gaming channel!
+
+## 💬 Support
+
+For issues or questions, reach out via:
+- 📧 Email: business@gamername.com
+- 💬 Discord: Join our server
+- 🐦 Twitter: @gamername
+
+---
+
+**Built with ❤️ for gamers, by gamers**
+
+🎮 Start streaming, start winning! 🎮
