@@ -5,9 +5,10 @@ import { loadingSpinner, loadingDots, loadingTextShimmer } from '../animations/v
 export function Loading({ size = 48, text = 'Loading...', className = '' }) {
   const dotCount = 3
   const dots = Array.from({ length: dotCount })
+  const isInline = className.includes('flex-row')
 
   return (
-    <div className={`flex flex-col items-center justify-center gap-3 ${className}`}>
+    <div className={`flex ${isInline ? 'flex-row' : 'flex-col'} items-center justify-center ${isInline ? 'gap-1' : 'gap-3'} ${className}`}>
       <motion.div
         style={{ width: size, height: size, borderRadius: '50%', border: '6px solid rgba(255,255,255,0.08)', borderTopColor: 'rgba(0,217,255,0.9)' }}
         variants={loadingSpinner}

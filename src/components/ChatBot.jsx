@@ -313,8 +313,8 @@ TONE: Friendly streamer who loves gaming, knowledgeable about current gaming tre
                     animate={{ opacity: 1 }}
                     className="flex justify-start"
                   >
-                    <div className="bg-neon-purple bg-opacity-30 text-neon-cyan px-4 py-2 rounded-lg flex items-center">
-                      <Loading size={28} text="AI thinking..." />
+                    <div className="bg-neon-purple bg-opacity-30 text-neon-cyan px-4 py-2 rounded-lg">
+                      <Loading size={18} text="AI thinking..." className="flex-row" />
                     </div>
                   </motion.div>
                 )}

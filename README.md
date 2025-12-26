@@ -1,32 +1,78 @@
 # Gaming Streamer Site
 
-Local development:
+## Local development:
 
-1. Install dependencies
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-2. Start the proxy server (requires YOUTUBE_API_KEY and CHANNEL_ID in env):
+### 2. Set up environment variables
+
+Create a `.env` file or export environment variables:
+
+```powershell
+# PowerShell
+$env:YOUTUBE_API_KEY="AIzaSyBKb6WbmsZmVIbjNwyKqON0hCIo-FUgpOU"
+$env:CHANNEL_ID="your_actual_channel_id"  # Replace with your YouTube channel ID
+$env:GEMINI_API_KEY="AIzaSyBKb6WbmsZmVIbjNwyKqON0hCIo-FUgpOU"
+```
+
+Or create `.env.local`:
 
 ```bash
-# PowerShell
-$env:YOUTUBE_API_KEY="<your_key>"
-$env:CHANNEL_ID="<your_channel_id>"
-$env:GEMINI_API_KEY="<your_gemini_key>"
+YOUTUBE_API_KEY=AIzaSyBKb6WbmsZmVIbjNwyKqON0hCIo-FUgpOU
+CHANNEL_ID=your_actual_channel_id
+GEMINI_API_KEY=AIzaSyBKb6WbmsZmVIbjNwyKqON0hCIo-FUgpOU
+```
+
+### 3. Start the proxy server
+
+```bash
 npm run start:server
 ```
 
-3. Start the frontend
+Server will listen on `http://localhost:4000` and expose:
+- `GET /api/youtube?type=latest|shorts|live` — fetch videos
+- `POST /api/gemini` — forward prompts to Gemini AI
+- `GET /api/health` — server health check
+
+### 4. Start the frontend
 
 ```bash
 npm run dev
 ```
 
-Notes:
-- Do NOT commit `.env` with secret keys. Use environment variables in deployment.
-- The chat uses a server proxy at `/api/gemini` and YouTube data is proxied via `/api/youtube`.
+Open `http://localhost:3000` and test:
+- **Chat:** Click the chat bubble (bottom-right), use FAQ or ask questions
+- **Videos:** Home page loads latest videos from YouTube API
+- **Shorts:** Available via `/api/youtube?type=shorts`
+- **Live:** Available via `/api/youtube?type=live`
+
+## Notes
+
+- **Never commit `.env` with real keys.** Use environment variable secrets in deployment (Vercel, Netlify, AWS).
+- The proxy server uses Node's built-in `fetch` (or `node-fetch` fallback for Node <18).
+- Rate-limiting and TTL cleanup are built-in to prevent abuse and memory leaks.
+- YouTube and Gemini API keys are kept server-side; the frontend only calls the proxy endpoints.
+
+Push to GitHub
+----------------
+
+If you want to publish this repository to GitHub, run these commands (replace `<your-repo-url>`):
+
+```bash
+# create a remote repo on GitHub first, then:
+git remote add origin <your-repo-url>
+git branch -M main
+git push -u origin main
+```
+
+CI
+--
+
+A GitHub Actions workflow was added at `.github/workflows/ci.yml` that installs dependencies, runs lint (best-effort), and builds the project on pushes and PRs.
 # 🎮 Gaming YouTuber Website
 
 A high-energy, animated, interactive gaming YouTuber website built with React, Vite, Tailwind CSS, and Framer Motion. Perfect for streamers, content creators, and gaming influencers.
