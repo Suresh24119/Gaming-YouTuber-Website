@@ -5,8 +5,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const YOUTUBE_API_KEY = process.env.VITE_YOUTUBE_API_KEY || 'AIzaSyBKb6WbmsZmVIbjNwyKqON0hCIo-FUgpOU';
-const CHANNEL_ID = process.env.VITE_CHANNEL_ID || 'your_channel_id_here';
+const YOUTUBE_API_KEY = process.env.VITE_YOUTUBE_API_KEY || 'YOUR_ACTUAL_YOUTUBE_API_KEY_HERE';
+const CHANNEL_ID = process.env.VITE_CHANNEL_ID || 'UCN5w9zFhA_fzklkfgpaSdyw';
 
 // YouTube API proxy endpoint
 app.get('/api/youtube', async (req, res) => {
