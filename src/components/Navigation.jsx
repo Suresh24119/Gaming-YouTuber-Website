@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { NeonButton } from './NeonButton'
+import { Logo, TextLogo } from './Logo'
 
 export function Navigation() {
   const navLinks = [
@@ -21,12 +22,9 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="text-2xl font-bold gradient-text"
-        >
-          🎮 GAMER
-        </motion.div>
+        <Link to="/" className="flex items-center">
+          <Logo size="default" />
+        </Link>
 
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-8">
