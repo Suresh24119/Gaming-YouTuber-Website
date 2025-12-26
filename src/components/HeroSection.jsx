@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { NeonButton } from './NeonButton'
 import { useRef, useMemo } from 'react'
+import { LINKS } from '../config/links'
 
 export function HeroSection({ title = 'Welcome to Gaming', subtitle = 'High-Energy Streaming & Content' }) {
   const ref = useRef(null)
@@ -118,7 +119,10 @@ export function HeroSection({ title = 'Welcome to Gaming', subtitle = 'High-Ener
             }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <NeonButton className="text-lg px-8 py-4">
+            <NeonButton 
+              className="text-lg px-8 py-4"
+              onClick={() => window.open(LINKS.youtube.live, '_blank')}
+            >
               Watch Now
             </NeonButton>
           </motion.div>
@@ -126,7 +130,11 @@ export function HeroSection({ title = 'Welcome to Gaming', subtitle = 'High-Ener
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <NeonButton variant="outline" className="text-lg px-8 py-4">
+            <NeonButton 
+              variant="outline" 
+              className="text-lg px-8 py-4"
+              onClick={() => window.open(LINKS.discord, '_blank')}
+            >
               Join Discord
             </NeonButton>
           </motion.div>

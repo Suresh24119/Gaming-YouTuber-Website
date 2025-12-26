@@ -42,10 +42,17 @@ export function Navigation() {
 
         {/* CTA Buttons */}
         <div className="flex gap-3">
-          <NeonButton variant="outline" className="hidden sm:block text-xs py-2 px-4">
+          <NeonButton 
+            variant="outline" 
+            className="hidden sm:block text-xs py-2 px-4"
+            onClick={() => window.open('https://www.youtube.com/@YourChannel?sub_confirmation=1', '_blank')}
+          >
             Subscribe
           </NeonButton>
-          <NeonButton className="text-xs py-2 px-4">
+          <NeonButton 
+            className="text-xs py-2 px-4"
+            onClick={() => window.open('https://discord.gg/your-server', '_blank')}
+          >
             Join Discord
           </NeonButton>
         </div>

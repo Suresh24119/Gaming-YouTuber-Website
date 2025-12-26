@@ -326,6 +326,7 @@ export function Home() {
               whileHover="whileHover"
               whileTap={{ scale: 0.95 }}
               viewport={{ once: true }}
+              onClick={() => window.open('https://www.youtube.com/@YourChannel?sub_confirmation=1', '_blank')}
               animate={{
                 boxShadow: [
                   '0 0 0 0 rgba(255, 0, 85, 0.7)',
@@ -401,10 +402,10 @@ export function Home() {
             viewport={{ once: true }}
           >
             {[
-              { text: '📺 Watch Live', delay: 0 },
-              { text: '💬 Join Discord', delay: 0.1 },
-              { text: '🎮 Play Games', delay: 0.2 },
-              { text: '🎁 Get Rewards', delay: 0.3 }
+              { text: '📺 Watch Live', delay: 0, action: () => window.open('https://www.youtube.com/@YourChannel/live', '_blank') },
+              { text: '💬 Join Discord', delay: 0.1, action: () => window.open('https://discord.gg/your-server', '_blank') },
+              { text: '🎮 Play Games', delay: 0.2, action: () => window.open('/videos', '_self') },
+              { text: '🎁 Get Rewards', delay: 0.3, action: () => window.open('/giveaway', '_self') }
             ].map((btn, idx) => (
               <motion.button
                 key={idx}
@@ -412,6 +413,7 @@ export function Home() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={btn.action}
                 animate={{
                   boxShadow: [
                     '0 0 10px rgba(157, 0, 255, 0.5)',
