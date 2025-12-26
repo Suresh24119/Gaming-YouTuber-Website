@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { NeonButton } from './NeonButton'
 import { Logo, TextLogo } from './Logo'
+import { LINKS } from '../config/links'
+import { SocialIcons } from './SocialIcons'
 
 export function Navigation() {
   const navLinks = [
@@ -41,17 +43,41 @@ export function Navigation() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
+          {/* Quick Social Icons */}
+          <div className="hidden lg:flex gap-2 mr-3">
+            <motion.a
+              href={LINKS.youtube.subscribe}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-red-600 hover:bg-red-500 rounded-lg flex items-center justify-center transition-all duration-200"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <SocialIcons.YouTube size={16} className="text-white" />
+            </motion.a>
+            <motion.a
+              href={LINKS.discord}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-indigo-600 hover:bg-indigo-500 rounded-lg flex items-center justify-center transition-all duration-200"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <SocialIcons.Discord size={16} className="text-white" />
+            </motion.a>
+          </div>
+
           <NeonButton 
             variant="outline" 
             className="hidden sm:block text-xs py-2 px-4"
-            onClick={() => window.open('https://www.youtube.com/@YourChannel?sub_confirmation=1', '_blank')}
+            onClick={() => window.open(LINKS.youtube.subscribe, '_blank')}
           >
             Subscribe
           </NeonButton>
           <NeonButton 
             className="text-xs py-2 px-4"
-            onClick={() => window.open('https://discord.gg/your-server', '_blank')}
+            onClick={() => window.open(LINKS.discord, '_blank')}
           >
             Join Discord
           </NeonButton>

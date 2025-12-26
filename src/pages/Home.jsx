@@ -1,5 +1,7 @@
 import { HeroSection } from '../components/HeroSection'
 import { VideoGrid } from '../components/VideoGrid'
+import { ShortsGrid } from '../components/ShortsGrid'
+import { SocialMediaFollow } from '../components/SocialMediaFollow'
 import { Newsletter } from '../components/Newsletter'
 import { Giveaway } from '../components/Giveaway'
 import { Leaderboard } from '../components/Leaderboard'
@@ -118,6 +120,37 @@ export function Home() {
           >
             <VideoGrid />
           </motion.div>
+        </motion.div>
+      </section>
+
+      {/* YouTube Shorts Section */}
+      <section className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <ShortsGrid />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Social Media Follow Section */}
+      <section className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <SocialMediaFollow title="🚀 Follow Kailash Live" />
         </motion.div>
       </section>
 

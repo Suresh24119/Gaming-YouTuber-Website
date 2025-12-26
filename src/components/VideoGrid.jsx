@@ -36,7 +36,7 @@ export function VideoGrid({ videos: propVideos = null, title = 'Latest Videos' }
           {
             id: 'demo1',
             title: 'Epic Gaming Moments - Best Highlights 2024',
-            thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg',
+            thumbnail: 'https://youtube.com/shorts/2ueVFTp5d4M?si=qESXBrc32-LNrAid',
             duration: '15:30',
             views: '250K',
             channelTitle: 'Kailash Live'
@@ -44,7 +44,7 @@ export function VideoGrid({ videos: propVideos = null, title = 'Latest Videos' }
           {
             id: 'demo2',
             title: 'Live Gaming Stream - Fortnite Victory Royale',
-            thumbnail: 'https://img.youtube.com/vi/jNQXAC9IVRw/mqdefault.jpg',
+            thumbnail: 'https://youtube.com/shorts/hB9thJHkR2o?si=eLnpoa7aJ_cG5HIn',
             duration: '22:45',
             views: '180K',
             channelTitle: 'Kailash Live'
@@ -52,7 +52,7 @@ export function VideoGrid({ videos: propVideos = null, title = 'Latest Videos' }
           {
             id: 'demo3',
             title: 'Gaming Setup Tour 2024 - Complete Streaming Setup',
-            thumbnail: 'https://img.youtube.com/vi/M7lc1UVf-VE/mqdefault.jpg',
+            thumbnail: 'https://youtube.com/shorts/Vf440irHn7Q?si=orzm2MT7VmzIXS78',
             duration: '12:15',
             views: '500K',
             channelTitle: 'Kailash Live'
@@ -60,7 +60,7 @@ export function VideoGrid({ videos: propVideos = null, title = 'Latest Videos' }
           {
             id: 'demo4',
             title: 'Call of Duty Warzone - 20 Kill Game!',
-            thumbnail: 'https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg',
+            thumbnail: 'https://youtube.com/shorts/4FkeyMFMoe8?si=Jifuj2ZtJqZOjh-u',
             duration: '18:20',
             views: '320K',
             channelTitle: 'Kailash Live'

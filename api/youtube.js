@@ -9,6 +9,20 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
+  // Helper function to parse ISO 8601 duration to seconds
+  function parseDuration(duration) {
+    if (!duration || !duration.startsWith('PT')) return 0;
+    
+    const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!match) return 0;
+    
+    const hours = parseInt(match[1]) || 0;
+    const minutes = parseInt(match[2]) || 0;
+    const seconds = parseInt(match[3]) || 0;
+    
+    return hours * 3600 + minutes * 60 + seconds;
+  }
+
   try {
     const { type, maxResults = 12, id } = req.query;
     const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || process.env.VITE_YOUTUBE_API_KEY;
@@ -38,7 +52,42 @@ export default async function handler(req, res) {
         break;
       
       case 'shorts':
+        // First try to get shorts using duration filter
         url = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${maxResults}&type=video&videoDuration=short`;
+        
+        // If that doesn't work, we'll get recent videos and filter by duration in the response
+        const searchResponse = await fetch(url);
+        const searchData = await searchResponse.json();
+        
+        if (searchData.items && searchData.items.length > 0) {
+          // Get video details to check actual duration
+          const videoIds = searchData.items.map(item => item.id.videoId).join(',');
+          const detailsUrl = `https://www.googleapis.com/youtube/v3/videos?key=${YOUTUBE_API_KEY}&id=${videoIds}&part=contentDetails,statistics`;
+          const detailsResponse = await fetch(detailsUrl);
+          const detailsData = await detailsResponse.json();
+          
+          // Filter for shorts (videos under 60 seconds)
+          const shortsItems = searchData.items.filter((item, index) => {
+            const details = detailsData.items[index];
+            if (!details || !details.contentDetails) return false;
+            
+            const duration = details.contentDetails.duration;
+            const seconds = parseDuration(duration);
+            return seconds <= 60; // YouTube Shorts are 60 seconds or less
+          });
+          
+          // Merge search data with details
+          const mergedItems = shortsItems.map((item, index) => {
+            const details = detailsData.items.find(d => d.id === item.id.videoId);
+            return {
+              ...item,
+              contentDetails: details?.contentDetails,
+              statistics: details?.statistics
+            };
+          });
+          
+          return res.json({ items: mergedItems });
+        }
         break;
       
       case 'live':
